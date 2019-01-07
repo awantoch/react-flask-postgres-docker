@@ -4,3 +4,6 @@ dev:
 
 run:
 	@FLASK_APP=main.py python -m flask run --port ${PORT}
+
+migrate:
+	@echo "Not Implemented!"

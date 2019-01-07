@@ -6,11 +6,6 @@ export
 build:
 	@docker-compose build
 
-# Migrate database
-migrate: migrate-api
-migrate-%:
-	@docker-compose run --rm $* make migrate
-
 # Bootstrap system
 setup: build migrate
 
@@ -22,9 +17,15 @@ up:
 down:
 	@docker-compose down
 
+# Migrate database
+migrate: migrate-server
+migrate-%:
+	@docker-compose run --rm $* make migrate
+
 # Remove project volumes
 uninstall:
 	@docker volume rm pgdata; true
+	@docker volume rm client_node_modules; true
 
 # Purge project containers and volumes
 purge:
@@ -34,4 +35,4 @@ purge:
 
 # Pop a shell against a (new) container
 shell-%:
-	@docker-compose run -it $* sh
+	@docker-compose run $* sh

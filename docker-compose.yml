@@ -21,8 +21,10 @@ services:
       - ./client/dist:/code/dist
     ports:
       - $PORT:$PORT
+      - $DEBUG_PORT:$DEBUG_PORT
     expose:
       - $PORT
+      - $DEBUG_PORT
     depends_on:
       - db
   client:
