@@ -1,4 +1,4 @@
-FROM python:3.7.1-alpine3.8
+FROM python:alpine3.7
 
 ENV CODE_DIR=/code
 
